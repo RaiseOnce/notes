@@ -1,6 +1,12 @@
 import './App.css'
 import Button from './components/Button/Button'
 import JournalItem from './components/JournalItem/JournalItem'
+import CardButton from './components/CardButton/CardButton'
+import Header from './components/Header/Header'
+import LeftPanel from './layouts/LeftPanel/LeftPanel'
+import Body from './layouts/Body/Body'
+import JournalList from './components/JournalList/JournalList'
+import JournalAddButton from './components/JournalAddButton/JournalAddButton'
 
 function App() {
   const data = [
@@ -17,21 +23,34 @@ function App() {
   ]
 
   return (
-    <div>
-      <h1>Header</h1>
-      <p>Some text</p>
+    <div className="app">
+      <LeftPanel>
+        <Header />
+        <JournalList>
+          <JournalAddButton />
+          <CardButton>
+            <JournalItem
+              title={data[0].title}
+              text={data[0].text}
+              date={data[0].date}
+            />
+          </CardButton>
 
-      <Button />
-      <JournalItem
-        title={data[0].title}
-        text={data[0].text}
-        date={data[0].date}
-      />
-      <JournalItem
-        title={data[1].title}
-        text={data[1].text}
-        date={data[1].date}
-      />
+          <CardButton>
+            <JournalItem
+              title={data[1].title}
+              text={data[1].text}
+              date={data[1].date}
+            />
+          </CardButton>
+        </JournalList>
+      </LeftPanel>
+      <Body>
+        Body
+        {/* <h1>Header</h1>
+        <p>Some text</p>
+        <Button /> */}
+      </Body>
     </div>
   )
 }
